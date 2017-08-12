@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const frogSchema = mongoose.Schema ({
     morph: String,
     scientificName: String,
@@ -9,16 +10,16 @@ const frogSchema = mongoose.Schema ({
 });
 
 const userSchema = mongoose.Schema ({
-    userName: String,
+    username: String,
     createdAt: Date,
     updatedAt: Date,
     wishlist: [frogSchema] 
-});
+})
 
 const breederSchema = mongoose.Schema ({
     breederName: String,
     website: String
-})
+});
 
 const User = mongoose.model('User', userSchema);
 const Frog = mongoose.model('Frog', frogSchema);

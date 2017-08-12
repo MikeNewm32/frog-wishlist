@@ -14,8 +14,8 @@ Frog.remove({}, (err) => console.log(err));
 Breeder.remove({}, (err) => console.log(err));
 
 const michael = new User({
-  userName: "Michael",
-  wishlist: ["cobalt"]
+  username: "Michael",
+  wishlist: []
 })
 
 const cobalt = new Frog({
