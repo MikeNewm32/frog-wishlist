@@ -10,7 +10,7 @@ const frogSchema = mongoose.Schema ({
 });
 
 const userSchema = mongoose.Schema ({
-    username: String,
+    userName: String,
     createdAt: Date,
     updatedAt: Date,
     wishlist: [frogSchema] 
