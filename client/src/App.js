@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import axios from 'axios';
 import Home from "./components/Home";
-import User from "./components/User"
-import Frog from "./components/Frog";
+import User from "./components/User";
 
 
 
@@ -30,7 +29,6 @@ class App extends Component {
           <div>
             <Route exact path ="/" component={Home} />
             <Route path="/user" component={User} />
-            <Route path="/frog" component={Frog} />
           </div>
 
       </Router>
