@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const UserController = require("./controllers/user");
 const FrogController = require("./controllers/frog");
-const BreederController = require("./controllers/breeder");
 const app = express();
 
 mongoose.Promise = global.Promise;
@@ -23,7 +22,6 @@ connection.on('error', (err) => {
 
 app.use('/api/user', UserController);
 app.use('/api/frog', FrogController);
-app.use('/api/breeder', BreederController);
 app.use(bodyParser.json());
 app.get('/', (req,res) => {
   res.send('Hello world!')

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 
-const frogSchema = mongoose.Schema ({
+const FrogSchema = new Schema ({
     morph: String,
     scientificName: String,
     description: String,
@@ -9,21 +10,20 @@ const frogSchema = mongoose.Schema ({
     care: Number
 });
 
-const userSchema = mongoose.Schema ({
-    userName: String,
-    createdAt: Date,
-    updatedAt: Date,
-    wishlist: [frogSchema] 
-})
-
-const breederSchema = mongoose.Schema ({
+const BreederSchema = new Schema ({
     breederName: String,
     website: String
 });
 
-const User = mongoose.model('User', userSchema);
-const Frog = mongoose.model('Frog', frogSchema);
-const Breeder = mongoose.model('Breeder', breederSchema);
+const UserSchema = new Schema ({
+    userName: String,
+    wishlist: [FrogSchema],
+    breederList: [BreederSchema]
+});
+
+const User = mongoose.model('User', UserSchema);
+const Frog = mongoose.model('Frog', FrogSchema);
+const Breeder = mongoose.model('Breeder', BreederSchema);
 
 module.exports = {
   User, Frog, Breeder
