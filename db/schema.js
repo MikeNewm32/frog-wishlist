@@ -10,21 +10,21 @@ const FrogSchema = new Schema ({
     care: Number
 });
 
-const BreederSchema = new Schema ({
-    breederName: String,
-    website: String
+const ListSchema = new Schema ({
+    name: String,
+    frogs: [FrogSchema]
 });
 
 const UserSchema = new Schema ({
     userName: String,
-    wishlist: [FrogSchema],
-    breederList: [BreederSchema]
+    list: [ListSchema],
+    
 });
 
-const User = mongoose.model('User', UserSchema);
 const Frog = mongoose.model('Frog', FrogSchema);
-const Breeder = mongoose.model('Breeder', BreederSchema);
+const List = mongoose.model('List', ListSchema);
+const User = mongoose.model('User', UserSchema);
 
 module.exports = {
-  User, Frog, Breeder
+    Frog, List, User
 };
