@@ -3,12 +3,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const UserController = require("./controllers/user");
+const ListController = require("./controllers/list");
 const FrogController = require("./controllers/frog");
 const app = express();
 
 mongoose.Promise = global.Promise;
-
-// Mongoose connection
 mongoose.connect(process.env.MONGODB_URI);
 const connection = mongoose.connection;
 
@@ -20,12 +19,16 @@ connection.on('error', (err) => {
   console.log('Mongoose default connection error: ' + err);
 }); 
 
-app.use('/api/user', UserController);
-app.use('/api/frog', FrogController);
 app.use(bodyParser.json());
-app.get('/', (req,res) => {
-  res.send('Hello world!')
-})
+app.use(express.static(__dirname + '/client/build/'));
+
+app.use('/api/user', UserController);
+app.use('/api/user/:userId/list', ListController);
+app.use('/api/user/:userId/list/:listId/frog', FrogController);
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

@@ -45,7 +45,7 @@ const wishList = new List ({
 
 const michael = new User({
   userName: "Michael",
-  list: [wishlist,myFrogs]
+  list: [wishList, myFrogs]
 });
 
 myFrogs.save().then(() => console.log("My frogs Saved!"));
