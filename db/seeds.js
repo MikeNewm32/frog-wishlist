@@ -45,9 +45,12 @@ const wishList = new List ({
 
 const michael = new User({
   userName: "Michael",
+  password: '12345',
   list: [wishList, myFrogs]
 });
 
+blueLegged.save().then(() => console.log("Blue Legged Saved!"));
+cobalt.save().then(() => console.log("Cobalt Saved!"));
 myFrogs.save().then(() => console.log("My frogs Saved!"));
 wishList.save().then(() => console.log("Wishlist Saved!"));
 michael.save().then(() => console.log("Michael Saved!"));

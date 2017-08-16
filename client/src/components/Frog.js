@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 
 class Frog extends Component {
@@ -22,7 +21,6 @@ class Frog extends Component {
                 <div>Description: {this.props.description}</div>
                 <div>Care: {this.props.care}</div>
                 <br />
-                <div><Link to="/">Home</Link></div>
             </div>
           );
         }

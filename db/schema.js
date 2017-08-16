@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
 
-const FrogSchema = new Schema ({
+const FrogSchema = mongoose.Schema ({
     morph: String,
     scientificName: String,
     description: String,
@@ -10,14 +9,15 @@ const FrogSchema = new Schema ({
     care: Number
 });
 
-const ListSchema = new Schema ({
+const ListSchema = mongoose.Schema ({
     name: String,
     frogs: [FrogSchema]
 });
 
-const UserSchema = new Schema ({
+const UserSchema = mongoose.Schema ({
     userName: String,
-    list: [ListSchema],
+    password: String,
+    list: [ListSchema]
     
 });
 

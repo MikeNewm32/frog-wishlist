@@ -35,15 +35,13 @@ class Home extends Component {
   render () {
     return(
           <div>
-            <h1>Login</h1>
+            <h2>Login</h2>
             <form onSubmit={this._loginSubmit}>
               <input type="userName" value={this.state.userInfo.userName} name="userName"
                 placeholder="Username" onChange={this._handleChange} required/>
               <br />
               <input className="button" type="submit" value="Login" />
             </form>
-              <br />
-              <div><Link to="/CreateUser">New User</Link></div>
           </div>
     )
   }

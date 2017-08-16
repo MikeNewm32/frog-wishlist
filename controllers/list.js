@@ -4,47 +4,43 @@ const Frog = require('../models/frog');
 const User = require('../models/user');
 const router = express.Router();
 
-router.get("/:id", (req,res) => {
-  List.findById(req.params.id).then((list) => {
-    res.json(list);
-  });
+router.get("/", (req, res) => {
+    const userId = req.params.id;
+    const listId = req.params.listId;
+
+    User.findById(userId).then((user) => {
+        const arrayOfLists = user.lists
+        res.json(arrayOfLists)
+    });
 });
 
-router.post("/new", (req,res) => {
-    const newList = new List ()
-    newList.name = req.body.name;
-    newList.save()
-    User.findById(req.params.userId).then((user) => {
-        user.list.push(newList)
+router.post("/", (req, res) => {
+    const userId = req.params.id;
+    const newListFrogs = req.body.lists;
+
+    User.findById(userId).then((user) => {
+        const newList = new List(newListFrogs);
+        user.lists.push(newList);
+        console.log(newList)
+        return user.save();
+    }).then((user) => {
         res.json(user);
-        return user.save()
-  });
-});
-
-router.post("/:id", (req, res) => {
-    const newFrog = new Frog()
-    newFrog.morph = req.body.morph;
-    newFrog.scientificName = req.body.scientificName;
-    newFrog.description = req.body.description;
-    newFrog.picture = req.body.picture;
-    newFrog.care = req.body.care
-
-    User.findById(req.params.userId)
-    .then((user) => {
-        const foundList = user.list.find((list) => {
-            return list.id === req.params.id
-        })
-        const oldList = foundList;
-        foundList.frog.push(newFrog);
-        const updateList = foundList;
-        List.findByIdAndUpdate(oldList, updateList, {new: true})
-        .then((list) => {console.log('update' + list)})
-        .then(() => {console.log(user)
-        res.json(user)
-    })
-    return user.save()
-    })
+    }).catch(err = console.log(err));
 })
+
+router.get('/:listId', (req, res) => {
+    const userId = req.params.id;
+    const listId = req.params.listId;
+    User.findById(userId).then((user) => {
+        const foundList = user.lists.find((list) => {
+            return list.id === listId;
+        })
+        res.json(foundList)
+    })
+    .catch((error) => {
+        console.log("Failed " + error);
+    })
+});
 
 
 module.exports = router;
