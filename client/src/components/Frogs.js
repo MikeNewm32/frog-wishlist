@@ -1,29 +1,59 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import axios from 'axios';
+import FrogList from './FrogList';
 
 
-class Frog extends Component {
+
+class Frogs extends Component {
     
-    _RemoveFrog = () => {
-        console.log('remove frog ' + this.props.frog._id)
-        this.props.deleteFrog(this.props.frog._id)
-    }
-    
-    render() {
-        return (
-            <div>
-                <h1>Frog page</h1>
-                <br />
-                <div>
-                    {/* <img src={this.props.frog.picture} alt="" /> */}
-                </div>
-                <div>Morph: {this.props.morph}</div>
-                <div>Scientific Name: {this.props.scientificName}</div>
-                <div>Description: {this.props.description}</div>
-                <div>Care: {this.props.care}</div>
-                <br />
-            </div>
-          );
+constructor() {
+    super();
+    this.state = {
+        lists: {
+            frogs: []
         }
-      }
+    }
+}
 
-export default Frog;
+componentWillMount() {
+    this._createFrogData(this.props.match.params.userId, this.props.match.params.listId);
+}
+
+_createFrogData = (userId, listId) => {
+    axios.get(`/api/user/${userId}/lists/${listId}`).then(res => {
+        this.setState({
+            id: res.data._id,
+            lists: res.data,
+        });
+        console.log(this.state.lists.frogs);
+        console.log(res.data.frogs);
+    })
+}
+
+render() {
+    const userId = this.props.match.params.userId;
+    const frogs = this.state.lists.frogs;
+    const frogComponents = frogs.map((frog, index) => {
+        return <FrogList
+        {...frog}
+        createFrogData={this._createFrogData}
+        key={index}
+        userId={this.props.match.params.userId}
+        listId={this.props.match.params.listId}
+        frogId={this.state.id} />
+    })
+    return (
+        <div>
+            {frogComponents}
+            <div><Link to={`/user/${userId}/lists/${this.state.id}/frogs/new`}>Add new frog</Link></div>
+            <div><Link to={`/user/${userId}/`}>Back to lists</Link></div>
+        </div>
+    )
+  }
+}
+Frogs.defaultProps = {
+    frogs: []
+}
+
+export default Frogs;

@@ -59,19 +59,19 @@ _handleChange = event => {
 render () {
     return(
       <div>
-        <h3>New Frog</h3>
+        <h3>Edit Frog</h3>
           <div>
             <form onSubmit={this._handleSubmit}>
                 <input type="text"  onChange={this._handleChange}
-                    value={this.state.newFrog.morph} name="morph" placeholder="Frog morph" required/>
+                    value={this.state.editFrog.morph} name="morph" placeholder="Frog morph" required/>
                 <input type="text" onChange={this._handleChange}
-                    value={this.state.newFrog.scientificName} name="scientificName" placeholder="Scientific Name" required/>
+                    value={this.state.editFrog.scientificName} name="scientificName" placeholder="Scientific Name" required/>
                 <input type="text" onChange={this._handleChange}
-                    value={this.state.newFrog.description} name="description" placeholder="Description" required/>
+                    value={this.state.editFrog.description} name="description" placeholder="Description" required/>
                 <input type="text" onChange={this._handleChange}
-                    value={this.state.newFrog.image} name="image" placeholder="URL to Frog Image" required/>
+                    value={this.state.editFrog.image} name="image" placeholder="URL to Frog Image" required/>
                 <input type="number" onChange={this._handleChange}
-                    value={this.state.newFrog.care} name="care" placeholder="Ease of care rating" required/>
+                    value={this.state.editFrog.care} name="care" placeholder="Ease of care rating" required/>
                 <input className="button" type="submit" value="Add Frog" />
             </form>
           </div>

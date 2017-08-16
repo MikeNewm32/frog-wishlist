@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from 'axios';
 import {withRouter} from 'react-router-dom';
-import NewFrogForm from './NewFrogForm';
+import NewFrog from './NewFrog';
 
 class FrogList extends Component {
     constructor() {
@@ -14,8 +14,8 @@ class FrogList extends Component {
 
     componentWillMount() {
         const userId = this.props.userId;
-        const tripId = this.props.tripId;
-        axios.get(`/api/user/${userId}/trips/${tripId}/activities`)
+        const listId = this.props.listId;
+        axios.get(`/api/user/${userId}/lists/${listId}/frogs`)
         .then((res) => {
             console.log(res.data);
         })
@@ -23,18 +23,18 @@ class FrogList extends Component {
 
      _deleteFrog = () => {
         const userId = this.props.userId;
-        const tripId = this.props.tripId;
-        const activityId = this.props._id;
-        axios.delete(`/api/user/${userId}/trips/${tripId}/activities/${activityId}/delete`)
+        const listId = this.props.listId;
+        const frogId = this.props._id;
+        axios.delete(`/api/user/${userId}/lists/${listId}/frogs/${frogId}/delete`)
             .then(res => {
-                this.props.createActivityData(userId, tripId)
+                this.props.createFrogData(userId, listId)
                 })
     }
 
     render() {
         const userId = this.props.userId;
-        const tripId = this.props.tripId;
-        const activityId = this.props._id;
+        const listId = this.props.listId;
+        const frogId = this.props._id;
 
         console.log(this.props);
 
@@ -45,24 +45,24 @@ class FrogList extends Component {
             <div>{this.props.price}</div>
             <div>{this.props.date}</div>
             </h3>
-            <Link to={`/user/${userId}/trips/${tripId}/activities/${activityId}/edit`}
-            activity={this.props}
+            <Link to={`/user/${userId}/lists/${listId}/frogs/${frogId}/edit`}
+            frog={this.props}
             >Edit Item</Link>
-            <button onClick={this._deleteActivity}>delete</button>
+            <button onClick={this._deleteFrog}>delete</button>
         </div>
     );
 };
 }
 
-ActivityList.defaultProps = {
+FrogList.defaultProps = {
    match: {
        params: {
            userId: '',
-           tripId: '',
+           listId: '',
        }
    },
-    activities: []
+    frogs: []
 }
 
 
-export default withRouter(ActivityList);
+export default withRouter(FrogList);
