@@ -35,19 +35,14 @@ render() {
     const userId = this.props.match.params.userId;
     const frogs = this.state.lists.frogs;
     const frogComponents = frogs.map((frog, index) => {
-        return <FrogList
-        {...frog}
-        createFrogData={this._createFrogData}
-        key={index}
-        userId={this.props.match.params.userId}
-        listId={this.props.match.params.listId}
+        return <FrogList {...frog} createFrogData={this._createFrogData}
+        key={index} userId={this.props.match.params.userId} listId={this.props.match.params.listId}
         frogId={this.state.id} />
     })
     return (
         <div>
             {frogComponents}
             <div><Link to={`/user/${userId}/lists/${this.state.id}/frogs/new`}>Add new frog</Link></div>
-            <div><Link to={`/user/${userId}/`}>Back to lists</Link></div>
         </div>
     )
   }

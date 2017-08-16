@@ -19,8 +19,8 @@ class EditFrog extends Component {
   }
 
 componentWillMount() {
-  const userId = this.props.match.params.userId;
-  const listId = this.props.match.params.listId;
+  const userId = this.props.match.params.userId
+  const listId = this.props.match.params.listId
   const frogId = this.props.match.params.frogId;
   axios.get(`/api/user/${userId}/lists/${listId}/frogs/${frogId}`)
   .then((res) => {

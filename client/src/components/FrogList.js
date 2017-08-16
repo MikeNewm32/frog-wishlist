@@ -41,14 +41,16 @@ class FrogList extends Component {
     return (
         <div>
             <h3>
-            <div>{this.props.description}</div>
-            <div>{this.props.price}</div>
-            <div>{this.props.date}</div>
+            <div>Morph: {this.props.morph}</div>
+            <div>Scientific Name: {this.props.scientificName}</div>
+            <div>Description: {this.props.description}</div>
+            <div>Picture: {this.props.picture}</div>
+            <div>Care Rating: {this.props.care}</div>
             </h3>
-            <Link to={`/user/${userId}/lists/${listId}/frogs/${frogId}/edit`}
+            <div><button><Link to={`/user/${userId}/lists/${listId}/frogs/${frogId}/edit`}
             frog={this.props}
-            >Edit Item</Link>
-            <button onClick={this._deleteFrog}>delete</button>
+            >Edit Frog</Link></button></div>
+            <div><button onClick={this._deleteFrog}>Delete</button></div>
         </div>
     );
 };
