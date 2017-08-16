@@ -75,7 +75,7 @@ router.put('/:frogId', (req, res) => {
     foundFrogArray.push(foundFrog);
     return user.save();
   }).then((user) => {
-    console.log("Updated user " + user._id "'s info!")
+    console.log("Updated user " + user._id)
     res.json(foundFrogArray)
   })
 });
