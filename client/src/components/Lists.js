@@ -18,7 +18,7 @@ class Lists extends Component {
         
     return (
         <div>
-            <p>{listsComponent}</p>
+            <p>{ listsComponent }</p>
         </div>
         );
     }

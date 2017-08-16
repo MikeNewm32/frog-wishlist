@@ -2,7 +2,7 @@ const express = require('express');
 const List = require('../models/list')
 const Frog = require('../models/frog');
 const User = require('../models/user')
-const router = express.Router({mergeParams: true});
+const router = express.Router({ mergeParams: true });
 
 router.get("/", (req, res) => {
   const userId = req.params.id;
@@ -86,9 +86,9 @@ router.delete('/:frogId/delete', (req, res) => {
   const frogId = req.params.frogId;
 
   User.findById(userId).then((user) => {
-    const newLists = user.lists.map((trip) => {
+    const newLists = user.lists.map((list) => {
       if (list.id === listID){
-        const newFrogs = trip.frogs.filter((frog) => {
+        const newFrogs = list.frogs.filter((frog) => {
           return frog.id !== frogId
         })
         list.frogs = newFrogs;

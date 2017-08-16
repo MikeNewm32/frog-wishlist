@@ -46,7 +46,7 @@ const wishList = new List ({
 const michael = new User({
   userName: "Michael",
   password: '12345',
-  list: [wishList, myFrogs]
+  lists: [wishList, myFrogs]
 });
 
 blueLegged.save().then(() => console.log("Blue Legged Saved!"));

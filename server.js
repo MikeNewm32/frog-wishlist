@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const UserController = require("./controllers/user");
-const ListController = require("./controllers/list");
+const ListsController = require("./controllers/list");
 const FrogController = require("./controllers/frogs");
 const app = express();
 
@@ -21,9 +21,9 @@ connection.on('error', (err) => {
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/client/build/'));
 
-app.use('/api/user', UserController);
-app.use('/api/user/:userId/list', ListController);
-app.use('/api/user/:userId/list/:listId/frog', FrogController);
+app.use('/api/user/', UserController);
+app.use('/api/user/:userId/lists', ListsController);
+app.use('/api/user/:userId/lists/:listId/frogs', FrogController);
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/client/build/index.html");

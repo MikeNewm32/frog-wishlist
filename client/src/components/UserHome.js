@@ -30,11 +30,10 @@ class UserHome extends Component {
   render() { 
     return (
       <div>
-          <h1>Hello {this.state.user.username}</h1> 
-          <h3>Ready to addd some frogs?</h3>
+          <h1>Hello {this.state.user.userName}</h1> 
+          <h3>Ready to add a new list?</h3>
             <Link to={`/user/${this.state.id}/lists/new`}>Add a New list</Link>  
-            <Lists lists={this.state.user.lists} 
-           userId={this.state.id}/>    
+            <Lists lists={this.state.user.lists} userId={this.state.id}/>    
       </div>
     );
   }
