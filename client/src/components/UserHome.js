@@ -16,8 +16,7 @@ class UserHome extends Component {
 
   componentWillMount() {
     const id = this.props.match.params.userId
-    axios.get(`/api/user/${id}`)
-    .then(res => {
+    axios.get(`/api/user/${id}`).then(res => {
     this.setState({
       id: res.data._id,
       user: res.data
@@ -31,10 +30,9 @@ class UserHome extends Component {
     return (
       <div>
           <h1>Hello {this.state.user.userName}</h1>
-          <h2>Lists: {this.state.user.lists.name}</h2> 
+          <h2>Lists: </h2>
           <h3>Ready to add a new list?</h3>
-            <Lists lists={this.state.user.lists} userId={this.state.id}/> 
-            <Link to={`/user/${this.state.id}/lists/new`}>Add a New list</Link>  
+          <Link to={`/user/${this.state.id}/lists/new`}>Add a New list</Link>  
       </div>
     );
   }
