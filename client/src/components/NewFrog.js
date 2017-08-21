@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 class NewFrog extends Component {
     constructor() {
@@ -10,7 +10,7 @@ class NewFrog extends Component {
                     morph: '',
                     scientificName: '',
                     description: '',
-                    picture: '',
+                    // picture: '',
                     care: 0
                 },
                 redirect: false
@@ -46,6 +46,9 @@ class NewFrog extends Component {
         } else {
         return (
             <div>
+            <div className="navbar">
+                <Link to={`/user/${userId}`}>Home</Link>
+                <Link to={`/user/${userId}/lists/${listId}/frogs`}>Back to List</Link>
             <form onSubmit={this._handleSubmit}>
             <input type="text"  onChange={this._handleChange}
                 value={this.state.newFrog.morph} name="morph" placeholder="Frog morph" required/>
@@ -53,27 +56,33 @@ class NewFrog extends Component {
                 value={this.state.newFrog.scientificName} name="scientificName" placeholder="Scientific Name" required/>
             <input type="text" onChange={this._handleChange}
                 value={this.state.newFrog.description} name="description" placeholder="Description" required/>
-            <input type="text" onChange={this._handleChange}
-                value={this.state.newFrog.image} name="image" placeholder="URL to Frog Image" required/>
+            {/* <input type="text" onChange={this._handleChange}
+                value={this.state.newFrog.image} name="image" placeholder="URL to Frog Image" required/> */}
             <input type="number" onChange={this._handleChange}
                 value={this.state.newFrog.care} name="care" placeholder="Ease of care rating" required/>
         <button>Add Frog</button>
         </form>
             </div>
+            </div>
         );
         }
     }
 }
+
 NewFrog.defaultProps = {
    match: {
        params: {
            userId: '',
-           listId: '',
+           listId: ''
        }
    },
+     location: {
+         state: {
             frog: {
                 _id: ''
     }
+         }
+     }
 }
 
 export default NewFrog;

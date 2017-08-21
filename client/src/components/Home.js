@@ -9,7 +9,7 @@ class Home extends Component {
     super();
     this.state = {
       users: [],
-      username: '',
+      username: ''
     }
   }
   componentWillMount() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import axios from 'axios';
 import {withRouter} from 'react-router-dom';
+import axios from 'axios';
 import NewFrog from './NewFrog';
 
 class FrogList extends Component {
@@ -27,7 +27,7 @@ class FrogList extends Component {
         const frogId = this.props._id;
         axios.delete(`/api/user/${userId}/lists/${listId}/frogs/${frogId}/delete`)
             .then(res => {
-                this.props.createFrogData(userId, listId)
+                this.props.createFrogInfo(userId, listId)
                 })
     }
 
@@ -44,12 +44,11 @@ class FrogList extends Component {
             <div>Morph: {this.props.morph}</div>
             <div>Scientific Name: {this.props.scientificName}</div>
             <div>Description: {this.props.description}</div>
-            <div>Picture: {this.props.picture}</div>
+            {/* <div>Picture: {this.props.picture}</div> */}
             <div>Care Rating: {this.props.care}</div>
             </h3>
             <div><button><Link to={`/user/${userId}/lists/${listId}/frogs/${frogId}/edit`}
-            frog={this.props}
-            >Edit Frog</Link></button></div>
+            frog={this.props}>Edit Frog</Link></button></div>
             <div><button onClick={this._deleteFrog}>Delete</button></div>
         </div>
     );
@@ -60,7 +59,7 @@ FrogList.defaultProps = {
    match: {
        params: {
            userId: '',
-           listId: '',
+           listId: ''
        }
    },
     frogs: []
