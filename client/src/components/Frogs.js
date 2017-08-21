@@ -37,8 +37,7 @@ class Frogs extends Component {
         const frogComponents = frogs.map((frog, index) => {
         return <FrogList 
         {...frog} 
-        createFrogInfo={this._createFrogInfo}
-        key={index} 
+        createFrogInfo={this._createFrogInfo}key={index} 
         userId={this.props.match.params.userId}
         listId={this.props.match.params.listId}
         frogId={this.state.id}
