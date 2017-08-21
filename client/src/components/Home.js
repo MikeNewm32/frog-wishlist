@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import UserHome from "./UserHome";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import { LoginStyle } from '../styles/LoginStyle';
 
 class Home extends Component {
   constructor(){
@@ -26,16 +26,16 @@ class Home extends Component {
 
   render() {
 
-        return (
-            <div>
+    return (
+      <LoginStyle>
                  {this.state.users.map((user, i) => {
                     return (
                     <div key={i}> 
                     <Link to={`/user/${user._id}`}>Login</Link>
-                     </div> 
+                     </div>
                     )
                 })}
-              </div>
+              </LoginStyle>
             )
         }
     }

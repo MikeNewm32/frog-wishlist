@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import List from './List';
 import Frogs from './Frogs';
-
+import { ListsStyle } from '../styles/ListsStyle';
 
 
 class Lists extends Component {
@@ -17,9 +17,11 @@ class Lists extends Component {
     })
         
     return (
+        <ListsStyle>
         <div>
             <p>{ listsComponent }</p>
         </div>
+        </ListsStyle>
         );
     }
 }

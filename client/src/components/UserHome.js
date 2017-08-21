@@ -3,6 +3,7 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Lists from './Lists';
 import NewList from './NewList';
+import { UserStyle } from '../styles/UserStyle';
 
 
 class UserHome extends Component {
@@ -31,12 +32,14 @@ class UserHome extends Component {
 
   render() { 
     return (
+      <UserStyle>
         <div>
             <h1>Hello {this.state.user.userName}!</h1>
             <h3>Here are your lists!</h3>
             <div><Lists lists={this.state.user.lists} userId={this.state.id}/></div>
            <div>Add a <Link to={`/user/${this.state.id}/lists/new`}>New List</Link></div>
         </div>
+        </UserStyle>
     );
   }
 }
