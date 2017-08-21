@@ -30,7 +30,7 @@ componentWillMount() {
       morph: res.data.morph,
       scientificName: res.data.scientificName,
       description: res.data.description,
-      image: res.data.image,
+      // image: res.data.image,
       care: res.data.care
     })
   }).catch((err) => {
@@ -45,6 +45,7 @@ _handleChange = event => {
          frogs[attributeName] = attributeValue;
          this.setState({ frogs })
  };
+
  _handleSubmit = (e) => {
    e.preventDefault()
    const payload = this.state.frogs;
@@ -58,7 +59,18 @@ _handleChange = event => {
 
 
 render () {
-    return(
+  const userId = this.props.match.params.userId
+  const listId = this.props.match.params.listId
+
+  if (this.state.redirect) {
+    return <Redirect to={`/user/${userId}/lists/${listId}/frogs`}/>
+  } else {
+  } return(
+    <div>
+    <div className="navbar">
+    <Link to={`/user/${userId}`}>Home</Link>
+    <Link to={`/user/${userId}/lists/${listId}/frogs`}>Back to Frogs</Link>
+    </div>
       <div>
         <h3>Edit Frog</h3>
           <div>
@@ -69,13 +81,14 @@ render () {
                     value={this.state.editFrog.scientificName} name="scientificName" placeholder="Scientific Name" required/>
                 <input type="text" onChange={this._handleChange}
                     value={this.state.editFrog.description} name="description" placeholder="Description" required/>
-                <input type="text" onChange={this._handleChange}
-                    value={this.state.editFrog.image} name="image" placeholder="URL to Frog Image" required/>
+                {/* <input type="text" onChange={this._handleChange}
+                    value={this.state.editFrog.image} name="image" placeholder="URL to Frog Image" required/> */}
                 <input type="number" onChange={this._handleChange}
                     value={this.state.editFrog.care} name="care" placeholder="Ease of care rating" required/>
                 <input className="button" type="submit" value="Add Frog" />
             </form>
           </div>
+      </div>
       </div>
     )
   }
