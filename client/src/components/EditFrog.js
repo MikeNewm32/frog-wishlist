@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+
 
 
 class EditFrog extends Component {
@@ -11,7 +12,7 @@ class EditFrog extends Component {
         morph: '',
         scientificName: '',
         description: '',
-        picture: '',
+        // picture: '',
         care: ''
       },
       redirect: false
