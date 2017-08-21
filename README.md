@@ -10,7 +10,7 @@ This is an app that allows a user to keep track what frogs they have and frogs t
 ### ERD:
 
 ## Features
-As of now most of the features are broken and bugged not allowing them to work properly. 
+As of now most of the features are broken and bugged not allowing them to work properly. Heroku app is still under work also.
 
 ## For the future 
 In the future this app will be able to be used by multiple users and with more useful features such as adding a breeder to animals as some are only able to be purchased from certain breeders. This will be helpful so you don't forget where you can find them later. More user friendly styling and db function is also necessary.
