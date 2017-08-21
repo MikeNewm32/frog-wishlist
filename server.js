@@ -21,9 +21,9 @@ connection.on('error', (err) => {
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/client/build/'));
 
-app.use('/api/user/', UserController);
-app.use('/api/user/:userId/lists', ListsController);
 app.use('/api/user/:userId/lists/:listId/frogs', FrogController);
+app.use('/api/user/:userId/lists', ListsController);
+app.use('/api/user/', UserController);
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/client/build/index.html");

@@ -1,7 +1,7 @@
 const express = require('express');
-const List = require('../models/list')
 const Frog = require('../models/frog');
-const User = require('../models/user')
+const List = require('../models/list');
+const User = require('../models/user');
 const router = express.Router({ mergeParams: true });
 
 router.get("/", (req, res) => {

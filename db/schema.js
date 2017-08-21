@@ -1,29 +1,29 @@
 const mongoose = require('mongoose');
 
 
-const FrogSchema = mongoose.Schema ({
+const frogSchema = mongoose.Schema ({
     morph: String,
     scientificName: String,
     description: String,
-    picture: String,
+    // picture: String,
     care: Number
 });
 
-const ListSchema = mongoose.Schema ({
+const listSchema = mongoose.Schema ({
     name: String,
-    frogs: [FrogSchema]
+    frogs: [frogSchema]
 });
 
-const UserSchema = mongoose.Schema ({
+const userSchema = mongoose.Schema ({
     userName: String,
     password: String,
-    lists: [ListSchema]
+    lists: [listSchema]
     
 });
 
-const Frog = mongoose.model('Frog', FrogSchema);
-const List = mongoose.model('List', ListSchema);
-const User = mongoose.model('User', UserSchema);
+const Frog = mongoose.model('Frog', frogSchema);
+const List = mongoose.model('List', listSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = {
     Frog, List, User
