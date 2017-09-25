@@ -5,7 +5,7 @@ class List extends Component {
     render() {
         const userId = this.props.userId;
         return (
-            <div>
+            <div className="list-card">
                 <p><Link to={`/user/${userId}/lists/${this.props._id}/`}>{this.props.name}</Link></p>
             </div>
         );

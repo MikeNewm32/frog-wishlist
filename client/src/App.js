@@ -12,6 +12,7 @@ import List from './components/List';
 import ListItem from './components/ListItem';
 import EditList from './components/EditList';
 import Navbar from './components/Navbar';
+import './App.css';
 
 class App extends Component {
   render(){

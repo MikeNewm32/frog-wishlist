@@ -22,3 +22,34 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.navbar-container {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-header a, .navbar-header a:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.user-home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.list-card a{
+  text-decoration: none;
+}
+
+.frog-card {
+  border: 1px solid black;
+  box-shadow: 0px 4px 6px black;
+  width: 30%;
+}
+
+.list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

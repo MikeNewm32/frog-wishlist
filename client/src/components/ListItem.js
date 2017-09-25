@@ -66,18 +66,20 @@ class ListItem extends Component {
             return (
                 <div>
                     <h2>{list.name}</h2>
+                <div className="list-container">
                     {frogs.map((frog) => {
-                        return <div key={frog._id}>
+                        return <div key={frog._id} className="frog-card">
                         <h3>{frog.morph}</h3>
                         <h4>{frog.scientificName}</h4>
                         <h4>{frog.description}</h4>
                         </div>
                     })}
+                </div>
                     <Link to={`/user/${userId}/editlist/${listId}`} ><button> Edit List </button></Link>
                     <br />
                     <button onClick={this._deleteList}>Delete List</button>
-
                 </div>
+                
             );
         }
     }
