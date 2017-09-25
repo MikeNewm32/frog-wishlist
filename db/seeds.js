@@ -19,8 +19,7 @@ const cobalt = new Frog ({
   scientificName: "Dendrobates tinctorius",
   description: "Great beginner frog, bright blue and yellow coloration, bold, easy to breed, quiet call",
   // picture: "http://i.imgur.com/PhQkinF.jpg",
-  care: "2",
-  breederLink: "https://www.shorethingexotics.com/"
+  // care: 2,
 })
 
 const blueLegged = new Frog ({
@@ -28,8 +27,7 @@ const blueLegged = new Frog ({
   scientificName: "Ranitomeya ventrimaculata",
   description: " Great beginner thumbnail, bright yellow and black coloration, shy, easy to breed, quiet call, small, great in Groups",
   // picture: "http://i.imgur.com/8VTMUj6.jpg",
-  care: "2",
-  breederLink: "https://www.shorethingexotics.com/"
+//   care: 2,
 })
 
 const myFrogs = new List ({

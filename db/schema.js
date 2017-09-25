@@ -6,7 +6,7 @@ const frogSchema = mongoose.Schema ({
     scientificName: String,
     description: String,
     // picture: String,
-    care: Number
+    // care: Number
 });
 
 const listSchema = mongoose.Schema ({

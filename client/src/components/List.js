@@ -6,7 +6,7 @@ class List extends Component {
         const userId = this.props.userId;
         return (
             <div>
-                <p><Link to={`/user/${userId}/lists/${this.props._id}/frogs`}>{this.props.name}</Link></p>
+                <p><Link to={`/user/${userId}/lists/${this.props._id}/`}>{this.props.name}</Link></p>
             </div>
         );
     }

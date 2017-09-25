@@ -8,31 +8,36 @@ class NewList extends Component {
         super();
 
         this.state = {
-            lists: {
+            list: {
                 name: ''
             },
             redirect: false
         }
     }
 
-  _handleChange = event => {
-    const attributeName = event.target.name;
-         const attributeValue = event.target.value;
-         const lists = { ...this.state.lists };
-         lists[attributeName] = attributeValue;
-         this.setState({ lists })
+  _handleChange = (e) => {
+    const newState = {...this.state.list}
+    newState[e.target.name] = e.target.value
+    this.setState({ list: newState })
  };
 
   _handleSubmit = (e) => {
     e.preventDefault();
-    const payload = this.state;
+    const newList = {...this.state.list};
+    console.log(newList);
+    const payload = newList;
+    
+    payload.name = newList.name;
+    console.log(this.state.list);
+    console.log("payload in NewList is:");
+    console.log(payload);
     const userId = this.props.match.params.userId
-    const listId = this.props.match.params.listId
-    axios.post(`/api/user/${userId}/lists/`, payload)
+    console.log("userId is: " + userId)
+    axios.post(`/api/user/${userId}/lists`, newList)
         .then((res) => {
-      this.setState({"redirect": true});
+            console.log("list created");
+      this.setState({redirect: true});
     })
-    .catch(err => console.log(err));
   };
 
 

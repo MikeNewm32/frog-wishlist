@@ -5,7 +5,7 @@ const User = require('../models/user');
 const router = express.Router({ mergeParams: true });
 
 router.get("/", (req, res) => {
-    const userId = req.params.id;
+    const userId = req.params.userId;
     const listId = req.params.listId;
 
     User.findById(userId).then((user) => {
@@ -15,9 +15,13 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    const userId = req.params.id;
-    const newListFrogs = req.body.lists;
-
+    const userId = req.params.userId;
+    console.log("req.body is ")
+    console.log(req.body)
+    console.log("req.body.list is ")
+    console.log(req.body.list)
+    const newListFrogs = req.body;
+    console.log(newListFrogs);
     User.findById(userId).then((user) => {
         const newList = new List(newListFrogs);
         user.lists.push(newList);
@@ -25,16 +29,14 @@ router.post("/", (req, res) => {
         return user.save();
     }).then((user) => {
         res.json(user);
-    }).catch(err = console.log(err));
+    }).catch(err => console.log(err));
 })
 
-router.get('/:listId', (req, res) => {
-    const userId = req.params.id;
-    const listId = req.params.listId;
+router.get('/:id', (req, res) => {
+    const userId = req.params.userId;
+    const listId = req.params.id
     User.findById(userId).then((user) => {
-        const foundList = user.lists.find((list) => {
-            return list.id === listId;
-        })
+        const foundList = user.lists.findById(listId)
         res.json(foundList)
     })
     .catch((error) => {
