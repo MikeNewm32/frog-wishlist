@@ -27,7 +27,7 @@ class FrogList extends Component {
         const frogId = this.props._id;
         axios.delete(`/api/user/${userId}/lists/${listId}/frogs/${frogId}/delete`)
             .then(res => {
-                this.props.createFrogInfo(userId, listId)
+                console.log("successfully deleted")
                 })
     }
 
