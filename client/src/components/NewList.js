@@ -24,15 +24,9 @@ class NewList extends Component {
   _handleSubmit = (e) => {
     e.preventDefault();
     const newList = {...this.state.list};
-    console.log(newList);
     const payload = newList;
-    
     payload.name = newList.name;
-    console.log(this.state.list);
-    console.log("payload in NewList is:");
-    console.log(payload);
     const userId = this.props.match.params.userId
-    console.log("userId is: " + userId)
     axios.post(`/api/user/${userId}/lists`, newList)
         .then((res) => {
             console.log("list created");

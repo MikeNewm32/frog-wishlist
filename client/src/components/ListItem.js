@@ -11,6 +11,7 @@ class ListItem extends Component {
             redirect: false
         }
     }
+
     componentWillMount(){
         const userId = this.props.match.params.userId;
         const listId = this.props.match.params.listId;
@@ -54,28 +55,31 @@ class ListItem extends Component {
     //     })
     // }
     render() {
+        const userId = this.props.match.params.userId;
+        const listId = this.props.match.params.listId;
         const list = this.state.list;
         const frogs = this.state.frogs;
         console.log(frogs)
-        const userId = this.props.match.params.userId
         if (this.state.redirect) {
             return <Redirect to={`/user/${userId}`}/>
         } else {
-        return (
-            <div>
-                <h2>{list.name}</h2>
-                {frogs.map((frog) => {
-                    return <div key={frog._id}>
-                    <h3>{frog.morph}</h3>
-                    <h4>{frog.scientificName}</h4>
-                    <h4>{frog.description}</h4>
-                    </div>
-                })}
+            return (
+                <div>
+                    <h2>{list.name}</h2>
+                    {frogs.map((frog) => {
+                        return <div key={frog._id}>
+                        <h3>{frog.morph}</h3>
+                        <h4>{frog.scientificName}</h4>
+                        <h4>{frog.description}</h4>
+                        </div>
+                    })}
+                    <Link to={`/user/${userId}/editlist/${listId}`} ><button> Edit List </button></Link>
+                    <br />
                     <button onClick={this._deleteList}>Delete List</button>
 
-            </div>
-        );
-    }
+                </div>
+            );
+        }
     }
 }
 

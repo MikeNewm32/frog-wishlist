@@ -10,6 +10,7 @@ import NewFrog from './components/NewFrog';
 import EditFrog from './components/EditFrog';
 import List from './components/List';
 import ListItem from './components/ListItem';
+import EditList from './components/EditList';
 
 class App extends Component {
   render(){
@@ -21,6 +22,7 @@ class App extends Component {
             <Route exact path="/user/:userId/" component={UserHome} />
             <Route exact path="/user/:userId/lists" component={Lists} />
             <Route exact path="/user/:userId/lists/new" component={NewList} />
+            <Route exact path="/user/:userId/editlist/:listId" component={EditList} />
             <Route exact path="/user/:userId/lists/:listId/" component={ListItem} />
             <Route exact path="/user/:userId/lists/:listId/frogs/new/" component={NewFrog}/>
             <Route exact path="/user/:userId/lists/:listId/frogs/:frogId/edit/" component={EditFrog}/>

@@ -39,9 +39,14 @@ router.get('/:id', (req, res) => {
     console.log(listId)
     User.findById(userId).then((user) => {
         // console.log(user.lists)
-        user.lists.map((list) => {
-            console.log(list)
+        let list = {};
+        user.lists.map((userList) => {
+            if (userList.id === listId) {
+                return list = userList 
+            }   
         })
+        res.json({list})
+        console.log(list);
     })
 
     // User.findById(userId).then((user) => {
@@ -53,6 +58,25 @@ router.get('/:id', (req, res) => {
     //     console.log("Failed " + error);
     // })
 });
+
+router.put('/:id', (req, res) => {
+    const userId = req.params.userId;
+    const listId = req.params.id
+    console.log(req.body);
+    User.findById(userId).then((user) => {
+        let list = {};
+        user.lists.map((userList) => {
+            if (userList.id === listId) {
+                return list = userList
+            }
+        })
+        console.log(list.name)
+        list.name = req.body.name;
+        console.log(list.name)
+        user.save();
+        // res.redirect(`/user/${userId}/lists/${listId}`)
+    })
+})
 
 router.delete('/:id/delete', (req, res) => {
     const userId = req.params.userId;
